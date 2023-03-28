@@ -21,7 +21,10 @@ using Abp.Json;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.WebEncoders;
 using Newtonsoft.Json.Serialization;
-
+using DevExpress.AspNetCore;
+using DevExpress.AspNetCore.Reporting;
+using DevExpress.AspNetCore.Reporting.WebDocumentViewer;
+using DevExpViewer.Controllers;
 
 namespace DevExpViewer.Web.Startup
 {
@@ -38,6 +41,14 @@ namespace DevExpViewer.Web.Startup
 
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDevExpressControls();
+            services.AddMvc();
+            services.AddTransient<CustomWebDocumentViewerController>();
+            services.ConfigureReportingServices(configurator => {
+                configurator.ConfigureWebDocumentViewer(viewerConfigurator => {
+                    viewerConfigurator.UseCachedReportSourceBuilder();
+                });
+            });
             // MVC
             services.AddControllersWithViews(
                     options =>
@@ -57,6 +68,7 @@ namespace DevExpViewer.Web.Startup
 
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
+            services.AddTransient<WebDocumentViewerController>();
 
             services.Configure<WebEncoderOptions>(options =>
             {
@@ -92,6 +104,8 @@ namespace DevExpViewer.Web.Startup
             {
                 app.UseExceptionHandler("/Error");
             }
+            app.UseDevExpressControls();
+            System.Net.ServicePointManager.SecurityProtocol |= System.Net.SecurityProtocolType.Tls12;
 
             app.UseStaticFiles();
 
