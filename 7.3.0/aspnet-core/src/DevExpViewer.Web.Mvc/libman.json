@@ -2,16 +2,6 @@
   "defaultProvider": "cdnjs",
   "version": "1.0",
   "libraries": [
-    // DevExpress
-    {
-      "library": "node_modules/devextreme/dist/css/icons/",
-      "destination": "wwwroot/css/icons",
-      "files": [
-        "dxicons.ttf",
-        "dxicons.woff2",
-        "dxicons.woff"
-      ]
-    }
     //core libs start
     {
       "library": "jquery@3.4.1",
@@ -196,5 +186,17 @@
       "destination": "wwwroot/libs/push.js"
     }
     //other libs end
+    ,
+    {
+      "provider": "filesystem",
+      "library": "node_modules/devextreme/dist/css/icons/",
+      "destination": "wwwroot/lib/icons/",
+      "files": [
+        "dxicons.ttf",
+        "dxicons.woff2",
+        "dxicons.woff"
+      ]
+    }
   ]
 }
+
