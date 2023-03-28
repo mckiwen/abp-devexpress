@@ -47,5 +47,7 @@
   <ItemGroup>
     <Folder Include="wwwroot\libs\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
+    <PackageReference Include="DevExtreme.AspNet.Core" Version="22.2.4" />
+    <PackageReference Include="DevExtreme.AspNet.Data" Version="2.9.0" />
   </ItemGroup>
 </Project>
