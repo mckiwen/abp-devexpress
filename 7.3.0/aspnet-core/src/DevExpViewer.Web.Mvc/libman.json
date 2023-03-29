@@ -185,7 +185,6 @@
       "library": "push.js@1.0.12",
       "destination": "wwwroot/libs/push.js"
     },
-    //other libs end
     {
       "provider": "filesystem",
       "library": "node_modules/devextreme/dist/css/icons/",
@@ -196,6 +195,7 @@
         "dxicons.woff"
       ]
     }
+    //other libs end
   ]
 }
 
