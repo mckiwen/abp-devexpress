@@ -23,6 +23,14 @@ namespace DevExpViewer.Web.Startup
                 )
                 .AddItem(
                     new MenuItemDefinition(
+                        PageNames.Report,
+                        L("Report"),
+                        url: "Report",
+                        icon: "fas fa-info-circle"
+                    )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
                         PageNames.Home,
                         L("HomePage"),
                         url: "",
