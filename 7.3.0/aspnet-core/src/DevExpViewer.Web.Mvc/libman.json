@@ -188,7 +188,7 @@
     {
       "provider": "filesystem",
       "library": "node_modules/devextreme/dist/css/icons/",
-      "destination": "wwwroot/lib/icons/",
+      "destination": "wwwroot/css/icons/",
       "files": [
         "dxicons.ttf",
         "dxicons.woff2",

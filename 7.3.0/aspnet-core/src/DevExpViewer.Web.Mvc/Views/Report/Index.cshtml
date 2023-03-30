@@ -1,5 +1,6 @@
 ﻿@using DevExpViewer.Web.Reports;
 @using DevExpViewer.Web.Startup;
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf
 
 @{
     ViewBag.CurrentPageName = PageNames.Report;
@@ -9,6 +10,43 @@
 <link rel="stylesheet" href="~/css/designer.part.bundle.css" />
 <script src="~/js/designer.part.bundle.js"></script>
 
+@functions {
+    public string GetAntiXsrfRequestToken()
+    {
+        return Xsrf.GetAndStoreTokens(Context).RequestToken;
+    }
+}
+<script type="text/javascript">
+
+    function SetupJwt(bearerToken, xsrf) {
+        DevExpress.Analytics.Utils.ajaxSetup.ajaxSettings = {
+            headers: {
+                //'Authorization': 'Bearer ' + bearerToken,'
+                'X-XSRF-TOKEN': xsrf
+            }
+        };
+    }
+    function AttachXSRFToken_OnExport(args, xsrf) {
+        args.FormData["_RequestVerificationToken"] = xsrf;
+    }
+
+    function DesignerBeforeRender(args) {
+        var designer = args.designerModel;
+        SetupJwt('you can pass bearer here', "@GetAntiXsrfRequestToken()");
+        $(window).on('beforeunload', function (e) {
+            if (designer.isDirty()) {
+                designer.navigateByReports.closeAll().done(function () {
+                    return;
+                });
+                return "Designer has changes";
+            }
+        });
+    }
+
+    function OnViewerExport(_s, e) {
+        AttachXSRFToken_OnExport(e, "@GetAntiXsrfRequestToken()");
+    }
+</script>
 @(Html.DevExpress().ReportDesigner("reportDesigner")
     .Height("1000px")
-        .Bind(new TestReport()))
+        .Bind(new TestDesignerReport()))

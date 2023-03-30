@@ -169,19 +169,6 @@
     }
   },
   {
-    "outputFileName": "wwwroot/css/viewer.part.bundle.css",
-    "inputFiles": [
-      "node_modules/@devexpress/analytics-core/dist/css/dx-analytics.common.css",
-      "node_modules/@devexpress/analytics-core/dist/css/dx-analytics.light.css",
-      "node_modules/devexpress-reporting/dist/css/dx-webdocumentviewer.css"
-    ],
-    "minify": {
-      "enabled": false,
-      "adjustRelativePaths": false
-    }
-  },
-
-  {
     "outputFileName": "wwwroot/js/thirdparty.bundle.js",
     "inputFiles": [
       "node_modules/jquery/dist/jquery.min.js",
@@ -201,6 +188,18 @@
     "sourceMap": false
   },
   {
+    "outputFileName": "wwwroot/css/viewer.part.bundle.css",
+    "inputFiles": [
+      "node_modules/@devexpress/analytics-core/dist/css/dx-analytics.common.css",
+      "node_modules/@devexpress/analytics-core/dist/css/dx-analytics.light.css",
+      "node_modules/devexpress-reporting/dist/css/dx-webdocumentviewer.css"
+    ],
+    "minify": {
+      "enabled": false,
+      "adjustRelativePaths": false
+    }
+  },
+  {
     "outputFileName": "wwwroot/js/viewer.part.bundle.js",
     "inputFiles": [
       "node_modules/@devexpress/analytics-core/dist/js/dx-analytics-core.min.js",
@@ -214,6 +213,9 @@
   {
     "outputFileName": "wwwroot/css/designer.part.bundle.css",
     "inputFiles": [
+      "node_modules/@devexpress/analytics-core/dist/css/dx-analytics.common.css",
+      "node_modules/@devexpress/analytics-core/dist/css/dx-analytics.light.css",
+      "node_modules/devexpress-reporting/dist/css/dx-webdocumentviewer.css",
       "node_modules/@devexpress/analytics-core/dist/css/dx-querybuilder.css",
       "node_modules/devexpress-reporting/dist/css/dx-reportdesigner.css"
     ],
@@ -225,6 +227,9 @@
   {
     "outputFileName": "wwwroot/js/designer.part.bundle.js",
     "inputFiles": [
+      "node_modules/devextreme/dist/js/dx.all.js",
+      "node_modules/@devexpress/analytics-core/dist/js/dx-analytics-core.min.js",
+      "node_modules/devexpress-reporting/dist/js/dx-webdocumentviewer.min.js",
       "node_modules/@devexpress/analytics-core/dist/js/dx-querybuilder.min.js",
       "node_modules/devexpress-reporting/dist/js/dx-reportdesigner.min.js"
     ],
