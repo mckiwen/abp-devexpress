@@ -111,6 +111,8 @@
     <text name="InvalidPattern">Invalid</text>
     <text name="PairsDoNotMatch">Do not match</text>
     <text name="All">All</text>
+	<text name="Report">Report</text>
+	<text name="Report Viewer">Report Viewer</text>
     <text name="TotalRecordsCount">Total: {0}</text>
     <text name="Search">Search</text>
     <text name="Clear">Clear</text>
