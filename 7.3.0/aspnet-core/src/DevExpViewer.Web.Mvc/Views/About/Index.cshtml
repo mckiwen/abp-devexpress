@@ -38,7 +38,19 @@
 <input type="hidden" id="RequestVerificationToken" name="RequestVerificationToken" value="@GetAntiXsrfRequestToken()">
 
     @{
-    var viewerRender = Html.DevExpress().WebDocumentViewer("DocumentViewer").ClientSideEvents(x => { x.BeforeRender("WebDocumentViewer_BeforeRender"); x.OnExport("OnViewerExport"); }).Height("1000px").Bind(new TestReport());
+    var viewerRender = Html.DevExpress().WebDocumentViewer("DocumentViewer")
+        .ClientSideEvents(x => 
+            { 
+                x.BeforeRender("WebDocumentViewer_BeforeRender"); 
+                x.OnExport("OnViewerExport");
+            })
+        .ExportSettings(settings =>
+                        {
+                            settings.UseSameTab = false;
+                            settings.ShowPrintNotificationDialog = false;
+                        })
+        .Height("1000px")
+        .Bind(new TestReport());
 
     @viewerRender.RenderHtml()
     @viewerRender.RenderScripts()

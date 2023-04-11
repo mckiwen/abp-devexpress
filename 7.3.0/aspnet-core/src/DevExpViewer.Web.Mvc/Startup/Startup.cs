@@ -25,6 +25,8 @@ using DevExpress.AspNetCore;
 using DevExpress.AspNetCore.Reporting;
 using DevExpress.AspNetCore.Reporting.WebDocumentViewer;
 using DevExpViewer.Controllers;
+using DevExpress.AspNetCore.Reporting.QueryBuilder;
+using DevExpress.AspNetCore.Reporting.ReportDesigner;
 
 namespace DevExpViewer.Web.Startup
 {
@@ -69,6 +71,8 @@ namespace DevExpViewer.Web.Startup
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
             services.AddTransient<WebDocumentViewerController>();
+            services.AddTransient<ReportDesignerController>();
+            services.AddTransient<CustomQueryBuilderController>();
 
             services.Configure<WebEncoderOptions>(options =>
             {
